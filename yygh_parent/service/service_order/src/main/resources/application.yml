@@ -1,0 +1,42 @@
+server:
+  port: 8206
+spring:
+  application:
+    name: service-order
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yygh_order?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: ${common-pwd}
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/yygh_hosp
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  redis:
+    host: ${redis-host}
+    port: 6379
+    password: ${common-pwd}
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+  rabbitmq:
+    host: ${redis-host}
+    port: 5672
+    username: rabbitmq
+    password: ${common-pwd}
+weixin:
+  appid: wx74862e0dfcf69954
+  partner: 1558950191
+  partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+  cert: G:\项目\yygh\yygh_parent\service\service_order\src\main\resources\cert\apiclient_cert.p12

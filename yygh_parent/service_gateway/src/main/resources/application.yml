@@ -1,0 +1,42 @@
+server:
+  port: 80
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          #使用服务发现路由
+          enabled: true
+      routes:
+        - id: service-hosp
+          uri: lb://service-hosp
+          predicates:
+            - Path=/*/hosp/**
+        - id: service-cmn
+          uri: lb://service-cmn
+          predicates:
+            - Path=/*/cmn/**
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/user/**
+        - id: service-sms
+          uri: lb://service-sms
+          predicates:
+            - Path=/*/sms/**
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+            - Path=/*/oss/**
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/*/order/**
+        - id: service-statistics
+          uri: lb://service-statistics
+          predicates:
+            - Path=/*/statistics/**

@@ -1,0 +1,47 @@
+server:
+  port: 8160
+spring:
+  application:
+    name: service-user
+
+  # mysql连接配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yygh_user?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: ${common-pwd}
+
+  # jackson全局日期格式化配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  # redis
+  redis:
+    host: ${redis-host}
+    port: 6379
+    password: ${common-pwd}
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+
+  # nacos
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+wx:
+  open:
+    app_id: wxed9954c01bb89b47
+    app_secret: a7482517235173ddb4083788de60b90e
+    redirect_url: http://localhost:8160/api/ucenter/wx/callback
+    baseUrl: http://localhost:3000

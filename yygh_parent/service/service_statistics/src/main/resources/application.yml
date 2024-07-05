@@ -1,0 +1,10 @@
+server:
+  port: 8208
+spring:
+  application:
+    name: service-statistics
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848

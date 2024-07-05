@@ -1,0 +1,49 @@
+server:
+  port: 8202
+spring:
+  application:
+    name: service-cmn
+
+  # mysql连接配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yygh_cmn?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: ${common-pwd}
+
+  # redis配置
+  redis:
+    host: ${redis-host}
+    port: 6379
+    password: ${common-pwd}
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        # 阻塞的最长时间。负表无限
+        max-wait: -1
+        # 空闲连接数
+        max-idle: 5
+        min-idle: 0
+
+  # jackson全局日期格式化配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  # nacos
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  # rabbit-mq
+  rabbitmq:
+    host: ${redis-host}
+    port: 5672
+    username: rabbitmq
+    password: ${common-pwd}
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

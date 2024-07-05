@@ -1,0 +1,15 @@
+server:
+  port: 8207
+spring:
+  application:
+    name: service-task
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  rabbitmq:
+    host: ${redis-host}
+    port: 5672
+    username: rabbitmq
+    password: ${common-pwd}

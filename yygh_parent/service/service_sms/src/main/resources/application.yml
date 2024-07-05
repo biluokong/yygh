@@ -1,0 +1,36 @@
+server:
+  port: 8204
+spring:
+  application:
+    name: service-sms
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: ${redis-host}
+    port: 6379
+    password: ${common-pwd}
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  rabbitmq:
+    host: ${redis-host}
+    port: 5672
+    username: rabbitmq
+    password: ${common-pwd}
+
+aliyun:
+  sms:
+    ak: ${aliyun-ak}
+    sk: ${aliyun-sk}
+    sign-name: 阿里云短信测试
+    template-code: SMS_154950909
+
+
